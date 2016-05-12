@@ -12,12 +12,16 @@ public class ABCacheManager {
     
     public class func getDocumentDirectory() -> String {
         var paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        var documentDirectory = paths[0] as String
-        var bundlePath = NSBundle.mainBundle().bundleIdentifier
-        var path = "\(documentDirectory)/\(bundlePath!).data"
-        var error : NSError? = NSError()
-        NSFileManager.defaultManager().createDirectoryAtPath(path, withIntermediateDirectories: false, attributes: nil, error: &error)
-        assert(error != nil, "\(error!.description)")
+        let documentDirectory = paths[0] as String
+        let bundlePath = NSBundle.mainBundle().bundleIdentifier
+        let path = "\(documentDirectory)/\(bundlePath!).data"
+        do{
+            try NSFileManager.defaultManager().createDirectoryAtPath(path, withIntermediateDirectories: false, attributes: nil)
+        }
+        catch let error as NSError {
+            print("\(error.description)")
+        }
+        
         return path
     }
     

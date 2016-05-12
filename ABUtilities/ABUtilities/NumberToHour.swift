@@ -15,7 +15,7 @@ func measure(title: String!, call: () -> Void) {
     if let title = title {
         print("\(title): ")
     }
-    println("Time - \(endTime - startTime)")
+    print("Time - \(endTime - startTime)")
 }
 
 public extension Int {
@@ -38,9 +38,9 @@ public extension Int {
 public extension Double {
     
     public func toHourString(withSemiColon:Bool) -> String {
-        var h = self / 3600
-        var m = (self / 60) % 60
-        var s = self % 60
+        let h = self / 3600
+        let m = (self / 60) % 60
+        let s = self % 60
         return "\(Int(h).toHourString(true))\(Int(m).toHourString(true))\(Int(s).toHourString(false))"
     }
 }
@@ -48,9 +48,9 @@ public extension Double {
 public extension Float {
     
     public func toHourString(withSemiColon:Bool) -> String {
-        var h = self / 3600
-        var m = (self / 60) % 60
-        var s = self % 60
+        let h = self / 3600
+        let m = (self / 60) % 60
+        let s = self % 60
         return "\(Int(h).toHourString(true))\(Int(m).toHourString(true))\(Int(s).toHourString(false))"
     }
     

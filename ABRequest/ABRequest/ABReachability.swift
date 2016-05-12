@@ -48,7 +48,7 @@ public class ABReachability : NSObject {
     public func getNetworkStatus() -> NetworkStatus {
         var flag = SCNetworkReachabilityFlags.IsDirect
         let netStatus = SCNetworkReachabilityGetFlags(reachability!, &flag)
-        if (netStatus == 1) {
+        if (netStatus) {
             return networkStatusForFlags(flag)
         }
         return NetworkStatus.NotReachable
@@ -115,7 +115,7 @@ public class ABReachability : NSObject {
     public func startNotifier() -> Bool
     {
         currentStatus = getNetworkStatus()
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "checkStatus", userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ABReachability.checkStatus), userInfo: nil, repeats: true)
         return true;
     }
     

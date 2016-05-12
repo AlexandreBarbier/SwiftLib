@@ -17,7 +17,7 @@ public class UserDefaultManager {
     
     var appGroup : String = "" {
         didSet {
-            appGroupUserDefault = NSUserDefaults(suiteName: appGroup)
+            appGroupUserDefault = NSUserDefaults(suiteName: appGroup)!
         }
     }
 

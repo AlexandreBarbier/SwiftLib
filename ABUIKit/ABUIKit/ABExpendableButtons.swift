@@ -96,7 +96,7 @@ public class ABExpendableButton: UIView {
         for (key, value) in buttons {
             let button = UIButton(frame: fr)
             button.setImage(UIImage(named: key), forState: UIControlState.Normal)
-            button.addTarget(self, action: "buttonTouched:" , forControlEvents: UIControlEvents.TouchUpInside)
+            button.addTarget(self, action: #selector(ABExpendableButton.buttonTouched(_:)) , forControlEvents: UIControlEvents.TouchUpInside)
             button.circle()
             button.border(self.borderColor,width: 1.0)
             button.backgroundColor = self.backColor
@@ -125,7 +125,7 @@ public class ABExpendableButton: UIView {
         for (key, value) in buttons {
             let button = UIButton(frame: fr)
             button.setImage(UIImage(named: key), forState: UIControlState.Normal)
-            button.addTarget(self, action: "buttonTouched:" , forControlEvents: UIControlEvents.TouchUpInside)
+            button.addTarget(self, action: #selector(ABExpendableButton.buttonTouched(_:)) , forControlEvents: UIControlEvents.TouchUpInside)
             button.circle()
             button.backgroundColor = self.backColor
             button.border(UIColor.blackColor(),width: 1.0)
@@ -345,7 +345,7 @@ public class ABExpendableButton: UIView {
             self.backColor = backCol
         }
         closeButton.border(self.borderColor,width: 1.0)
-        closeButton.addTarget(self, action: "buttonTouched:" , forControlEvents: UIControlEvents.TouchUpInside)
+        closeButton.addTarget(self, action: #selector(ABExpendableButton.buttonTouched(_:)) , forControlEvents: UIControlEvents.TouchUpInside)
         
         closeButton.setImage(UIImage(named: "addIcon", inBundle: NSBundle(forClass: ABExpendableButton.self), compatibleWithTraitCollection: nil), forState:UIControlState.Normal)
         closeButton.backgroundColor = self.backColor

@@ -79,7 +79,7 @@ public class ABRequest : NSObject {
         postFormRequest.HTTPMethod = HTTPMethod.POST.rawValue
         addHeaderField("application/json", headerField: "Content-Type")
         addHeaderField("application/json", headerField: "Accept")
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "networkStatusChanged:", name: kReachabilityChangedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ABRequest.networkStatusChanged(_:)), name: kReachabilityChangedNotification, object: nil)
     }
     
     public func networkStatusChanged (sender:AnyObject) {
@@ -147,7 +147,7 @@ public class ABRequest : NSObject {
         failure:(response:NSURLResponse?, error:NSError!)->Void)
     {
         sharedABRequest.getRequest.URL = url
-         var k = NSURLConnection(request: sharedABRequest.getRequest, delegate: self)
+        
         NSURLConnection.sendAsynchronousRequest(sharedABRequest.getRequest, queue: sharedABRequest.getRequestQueue) { (response:NSURLResponse?, data:NSData?, error:NSError?) -> Void in
             
             if error == nil

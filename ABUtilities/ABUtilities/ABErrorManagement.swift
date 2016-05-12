@@ -11,7 +11,7 @@ import UIKit
 public extension NSError {
     
     public convenience init(className:String, code: Int, userInfo:[NSObject : AnyObject]?) {
-        var bundlePath = NSBundle.mainBundle().bundleIdentifier
+        let bundlePath = NSBundle.mainBundle().bundleIdentifier
         self.init(domain: "\(bundlePath).\(className)", code: code, userInfo: userInfo)
         
     }
